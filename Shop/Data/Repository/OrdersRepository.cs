@@ -23,8 +23,14 @@ namespace Shop.Data.Repository
         {
             order.orderTime = DateTime.Now;
             //добавляем заказ в таблицу БД
-            _appDBContent.Order.Add(order);
-            _appDBContent.SaveChanges();
+
+            var detailList = new List<OrderDetail>();
+            detailList.Add(new OrderDetail()
+            {
+                orderID = 0
+   
+            });
+            order.orderDetail = detailList;
 
             //переменная которая хранитте товары, которые
             //приобретает пользователь. Взять из карзины
@@ -34,12 +40,10 @@ namespace Shop.Data.Repository
                 var orderDatail = new OrderDetail()
                 {
                     CarID = elem.car.id,
-                    orderID = order.id,
                     price = elem.car.price
                 };
 
-                //добавим новый объект в БД
-                _appDBContent.OrderDetail.Add(orderDatail);
+                detailList.Add(orderDatail);
             }
 
             //сохранить изменения в БД
