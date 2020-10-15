@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Shop.Data.Models
+{
+    public class Category
+    {
+        //поля класса Category
+        public int id { set; get; } //set - устанавливать значение get - получать значение
+        public string categoryName { set; get; }
+        public string desc { set; get; }
+        public List<Car> cars { set; get; }
+    }
+}
